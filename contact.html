@@ -6,6 +6,7 @@
     <title>Home | Yang</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <style>
       * {
         margin: 0;
@@ -67,6 +68,8 @@
       }
       .navbar a:hover {
         color: cadetblue;
+        font-size: 20pt;
+        text-decoration:underline;
       }
       .main {
         height: auto;
@@ -87,6 +90,23 @@
         height: 400px;
       }
       .mianflexin {
+      }
+      .order {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        height: 150px;
+      }
+      .order .line {
+        display: inline-flex;
+        width: 35%;
+        border-top: 2px solid cadetblue;
+      }
+      .order .txt {
+        color: cadetblue;
+        vertical-align: middle;
+        font-family: monospace;
+        font-size: 15pt;
       }
       .end{
       height: 150px;
@@ -133,16 +153,15 @@
       <h1 id="titleetypeit" class="toptotop"></h1>
     </div>
     <nav id="navbar" class="navbar sticky-top">
-      <a href="index.html" style="color: cadetblue;">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" style="color: cadetblue;">Contact</a>
     </nav>
     <div class="main">
       <section id="1" class="section">
-        <h1 style="font-family: monospace; color: cadetblue; font-size: 25pt;" >Video</h1>
         <div class="mainflex">
           <div class="mianflexin">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/GDp4tOzMh6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <i class="fas fa-ad"></i>  
           </div>
           <div class="mianflexin">
             <p>
@@ -191,7 +210,10 @@
         </div>
       </section> -->
     </div>
-    <hr style="border:1px dashed #0000fff"/>
-    <p class ="end" style="text-align: center;color: cadetblue; font-size: 15pt; font-family: monospace">--------------------------------------------------------------------------------Yang Editor--------------------------------------------------------------------------------</p>
+    <div class="order">
+      <span style="white-space:pre">   </span><span class="line"></span>
+      <span style="white-space:pre">   </span><span class="txt" style="color: cadetblue; font-size: 15pt;">Yang Editor</span>
+      <span style="white-space:pre">   </span><span class="line"></span>
+  </div>
   </body>
 </html>

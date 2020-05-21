@@ -6,11 +6,12 @@
     <title>Home | Yang</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <style>
       * {
         margin: 0;
         padding: 0;
-        font-family: "Courier New", Courier, monospace;
+        font-family: "SimHei" ,monospace,serif;
       }
       .imgbox{
       width: 250px;
@@ -67,6 +68,8 @@
       }
       .navbar a:hover {
         color: cadetblue;
+        font-size: 20pt;
+        text-decoration:underline;
       }
       .main {
         height: auto;
@@ -88,40 +91,94 @@
       }
       .mianflexin {
       }
-      .end{
+      .order {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        height: 150px;
+      }
+      .order .line {
+        display: inline-flex;
+        width: 35%;
+        border-top: 2px solid cadetblue;
+      }
+      .order .txt {
+        color: cadetblue;
+        vertical-align: middle;
+        font-family: monospace;
+        font-size: 15pt;
+      }
+      .order2 {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+      }
+      .order2 .line {
+        display: inline-flex;
+        width: 70%;
+        border-top: 2px solid cadetblue;
+      }
+      .name {
+        font-weight: 900;
+        font-size: 30pt;
+        color: black;
+        text-align: left ;
+      }
+      .name .letter {
+        display: inline-block;
+        line-height: 1em;
+      }
+      .name2 {
+        font-weight: 900;
+        font-size: 25pt;
+        color: black;
+        vertical-align:text-top;
+        position: absolute;
+        top:900px;
+        left: 450px;
+      }
+      .name2 .letter {
+        display: inline-block;
+        line-height: 1em;
+      }
+      .autobiography{
+        font-size: 15pt;
+        color: cadetblue;
+        text-align: left;
+        line-height: 35px;
+      }
+      .nameleft {
+        width: 50%;
+        height: 350px;
+        float: left;
+      }
+      .nameright {
+        width: 50%;
+        height: 350px;
+        position: absolute;
+        top:470px;
+        left: 800px;
+      }
+      .nameimg {
+	    width: 500px;
+	    border-radius: 10px;
+	    box-shadow: 0 0 10px rgba(0,0,0,1.00);
+      margin-left: 10px;
+      }
+      .licenseleft{
+        width: 50%;
+        height: 350px;
+        float: left;
+      }
+      .licenseright{
+        width: 50%;
+        height: 350px;
+        float: right;
+      }
+      .end {
       height: 150px;
       }
     </style>
-    <script>
-      $(function () {
-        // 當#myNavbar上的<a>連結按鈕click時, 讓整頁慢慢滑動到指定位置=============================
-        $("#navbar a").on("click", function (event) {
-          // this.hash 是取得目前URL中的錨點位置,例如:#section1
-          // 當 this.hash (錨點位置) 不是空的時, 也就是有指定滑動到錨點位置時
-          if (this.hash !== "") {
-            // 阻止<a>連結被click時執行連結工作 (雷同return false, 但return false通常寫在最後)
-            event.preventDefault();
-            // 設定 hash 變數, 記錄目前的錨點
-            var hash = this.hash;
-            // 控制 html,body 執行 animate 動畫, 讓捲出的距離 = 目前錨點位置的 offset().top 座標
-            $("html, body")
-              .stop()
-              .animate({ scrollTop: $(hash).offset().top }, 800, function () {
-                // 將錨點名稱加到URL網址列的後方
-                window.location.hash = hash;
-              });
-          } // if end
-        }); // click end
-      });
-      window.onload = function () {
-        new TypeIt("#titleetypeit", {
-          strings: "Yang",
-          speed: 300,
-          waitUntilVisible: true,
-          loop: true,
-        }).go();
-      };
-    </script>
   </head>
   <body>
     <div id="0" class="topleft">
@@ -133,30 +190,40 @@
       <h1 id="titleetypeit" class="toptotop"></h1>
     </div>
     <nav id="navbar" class="navbar sticky-top">
-      <a href="index.html" style="color: cadetblue;">Home</a>
-      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
+      <a href="about.html" style="color: cadetblue;">About</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="main">
       <section id="1" class="section">
-        <h1 style="font-family: monospace; color: cadetblue; font-size: 25pt;" >Video</h1>
-        <div class="mainflex">
-          <div class="mianflexin">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/GDp4tOzMh6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="mianflexin">
-            <p>
-            </p>
-          </div>
+        <div class="nameleft">
+          <img class="nameimg" style="width: 270px; height: 300px;" src="img/yang.jpg">
         </div>
+        <div class="nameright">
+          <p class="name">黃智暘</p>
+          <B><p class="autobiography">生於1997年。</p></B>
+          <B><p class="autobiography">2015年參加全國高中技藝競賽優勝。</p></B>
+          <B><p class="autobiography">2018年擔任ASP.NET教學助理。</p></B>
+          <B><p class="autobiography">2019年高雄金屬工業研究發展中心實習。</p></B>
+          <B><p class="autobiography">2019年推甄上國立高雄科技大學資訊管理研究所。</p></B>
+          <B><p class="autobiography">目前研究各式HTML，CSS，JS語法。</p></B>
+          <br>
+          <br>
+          <p class="autobiography">E-mail：sodra001@gmail.com</p>
+        </div>
+        <div class="order2">
+          <span style="white-space:pre"></span><span class="line"></span>
+      </div>
       </section>
       <section id="2" class="section">
         <div class="mainflex">
-          <div class="mianflexin">
-            <h1 style="font-family:微軟正黑體 ; color: cadetblue; font-size: 25pt;" >網頁</h1>
-          </div>
-          <div class="mianflexin">
-            <p>
+            <p class="name2">證照</p>
+            <B><p class="autobiography" style="position: absolute ;top: 950px; left: 450px;">ICDL Data Analytic 國際證照</p></B>
+            <B><p class="autobiography" style="position: absolute ;top: 990px; left: 450px;">TQC-DK 專案管理概論。</p></B>
+            <B><p class="autobiography" style="position: absolute ;top: 1030px; left: 450px;">TQC-DK 電子商務概論。</p></B>
+            <B><p class="autobiography" style="position: absolute ;top: 1070px; left: 450px;">EEC-EEAP 企業電子化助理規劃師。</p></B>
+            <B><p class="autobiography" style="position: absolute ;top: 1110px; left: 450px;">電腦軟體應用 - 丙級。</p></B>
+            <B><p class="autobiography" style="position: absolute ;top: 1150px; left: 450px;">會計事務人工記帳 - 丙級</p></B>
             </p>
           </div>
         </div>
@@ -191,6 +258,82 @@
         </div>
       </section> -->
     </div>
-    <p class ="end" style="text-align: center;color: cadetblue; font-size: 15pt; font-family: monospace">--------------------------------------------------------------------------------Yang Editor--------------------------------------------------------------------------------</p>
+    <script>
+      $(function () {
+        // 當#myNavbar上的<a>連結按鈕click時, 讓整頁慢慢滑動到指定位置=============================
+        $("#navbar a").on("click", function (event) {
+          // this.hash 是取得目前URL中的錨點位置,例如:#section1
+          // 當 this.hash (錨點位置) 不是空的時, 也就是有指定滑動到錨點位置時
+          if (this.hash !== "") {
+            // 阻止<a>連結被click時執行連結工作 (雷同return false, 但return false通常寫在最後)
+            event.preventDefault();
+            // 設定 hash 變數, 記錄目前的錨點
+            var hash = this.hash;
+            // 控制 html,body 執行 animate 動畫, 讓捲出的距離 = 目前錨點位置的 offset().top 座標
+            $("html, body")
+              .stop()
+              .animate({ scrollTop: $(hash).offset().top }, 800, function () {
+                // 將錨點名稱加到URL網址列的後方
+                window.location.hash = hash;
+              });
+          } // if end
+        }); // click end
+      });
+      window.onload = function () {
+        new TypeIt("#titleetypeit", {
+          strings: "Yang",
+          speed: 300,
+          waitUntilVisible: true,
+          loop: true,
+        }).go();
+      };
+    </script>
+        <script>
+           var textWrapper = document.querySelector('.name');
+               textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+     
+               anime.timeline({loop: true})
+               .add({
+               targets: '.name .letter',
+               scale: [4,1],
+               opacity: [0,1],
+               translateZ: 0,
+               easing: "easeOutExpo",
+               duration: 1000,
+               delay: (el, i) => 70*i
+               }).add({
+               targets: '.name',
+               opacity: 0,
+               duration: 1000,
+               easing: "easeOutExpo",
+               delay: 1500
+          });
+         </script>
+                 <script>
+                  var textWrapper = document.querySelector('.name2');
+                      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+            
+                      anime.timeline({loop: true})
+                      .add({
+                      targets: '.name2 .letter',
+                      scale: [4,1],
+                      opacity: [0,1],
+                      translateZ: 0,
+                      easing: "easeOutExpo",
+                      duration: 1000,
+                      delay: (el, i) => 70*i
+                      }).add({
+                      targets: '.name2',
+                      opacity: 0,
+                      duration: 1000,
+                      easing: "easeOutExpo",
+                      delay: 1500
+                 });
+                </script>
+             <div class="order">
+              <span style="white-space:pre">   </span><span class="line"></span>
+              <span style="white-space:pre">   </span><span class="txt" style="color: cadetblue; font-size: 15pt;">Yang Editor</span>
+              <span style="white-space:pre">   </span><span class="line"></span>
+          </div>
   </body>
 </html>
