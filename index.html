@@ -12,10 +12,17 @@
         padding: 0;
         font-family: "Courier New", Courier, monospace;
       }
+      .img{
+      width: 135px;
+      height: 150px;  
+      -webkit-clip-path:circle(50% at 50% 50%);
+      border-radius: 50%;
+	    border: 1px solid rgba(0,0,0,1.0);
+      margin: auto;
+      }
       .top {
-        background-color: rgb(236, 236, 236);
         width: 100%;
-        height: 300px;
+        height: 400px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -23,24 +30,27 @@
       }
       .toptotop {
         align-self: center;
-        color: rgb(99, 99, 99);
+        color:cadetblue;
+        font-size: 45pt;
       }
       .navbar {
         background-color: rgb(255, 255, 255);
         line-height: 70px;
         text-align: center;
-        box-shadow: 0px 0px 5px 2px rgb(136, 134, 134);
+        box-shadow: 0px 0px 5px 3px rgb(136, 134, 134);
       }
       .navbar a {
         color: rgb(145, 145, 145);
         text-decoration: none;
         display: inline-block;
-        padding: 5px 50px;
+        padding: 5px 30px;
         line-height: 1.3;
         transition: 0.5s;
+        font-size: 15pt;
+        font-family:Arial, Helvetica, sans-serif;
       }
       .navbar a:hover {
-        color: rgb(0, 0, 0);
+        color: cadetblue;
       }
       .main {
         background-color: #a3a;
@@ -54,6 +64,7 @@
         background-color: rgb(180, 244, 255);
         padding: 40px 0 0 0;
         text-align: center;
+        margin: 5px;
       }
 
       .mainflex {
@@ -93,7 +104,7 @@
       window.onload = function () {
         new TypeIt("#titleetypeit", {
           strings: "Yang",
-          speed: 500,
+          speed: 300,
           waitUntilVisible: true,
           loop: true,
         }).go();
@@ -102,15 +113,17 @@
   </head>
   <body>
     <div id="0" class="top">
-      <h1 id="titleetypeit" class="toptotop"></h1>
+      <img class="img"  src="img/yang1.jpg">
+      <h1 id="titleetypeit" class="toptotop">
+      </h1>
     </div>
     <nav id="navbar" class="navbar sticky-top">
-      <a href="#0">Home</a>
+      <a href="index.html" style="color: cadetblue;">Home</a>
       <a href="about.html">About</a>
       <a href="#2">Contact</a>
     </nav>
     <div class="main">
-      <section id="1" class="section">
+      <!-- <section id="1" class="section">
         <div class="mainflex">
           <div class="mianflexin">
             <h1>111</h1>
@@ -196,7 +209,7 @@
             </p>
           </div>
         </div>
-      </section>
+      </section> -->
     </div>
   </body>
 </html>
