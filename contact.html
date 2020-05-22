@@ -7,6 +7,8 @@
     <script src="https://kit.fontawesome.com/630c3b9fbe.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
     <style>
       * {
         margin: 0;
@@ -48,6 +50,7 @@
         align-self: flex-start;
         color:cadetblue;
         font-size: 45pt;
+        font-family: Raleway, sans-serif;
       }
       .navbar {
         background-color: rgb(255, 255, 255);
@@ -89,7 +92,21 @@
         justify-content: space-around;
         height: 400px;
       }
+      @-webkit-keyframes fadein {
+        0% {
+            opacity: 0;
+            background-color: #fff;
+        }
+        100% {
+            opacity: 1;
+            background-color:  #fff;
+        }
+      }
       .mianflexin {
+        -webkit-animation-name: fadein;
+        -webkit-animation-duration: 1.5s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: 1; /* 动画只播放一次 */
       }
       .order {
         height: 60px;
@@ -177,7 +194,7 @@
       <section id="2" class="section">
         <div class="mainflex">
           <div class="mianflexin">
-            <h1 style="font-family:微軟正黑體 ; color: cadetblue; font-size: 25pt;" >網頁</h1>
+            <!-- <h1 style="font-family:微軟正黑體 ; color: cadetblue; font-size: 25pt;" >網頁</h1> -->
           </div>
           <div class="mianflexin">
             <p>
