@@ -1,0 +1,227 @@
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Noto Sans TC', sans-serif;
+}
+p,a,input,label,textarea,span,ul,li{
+    font-family: 'Open Sans', sans-serif;
+}
+.img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+#intro .toptotop {
+    align-self: flex-start;
+    color:cadetblue;
+    font-size: 45pt;
+    font-family: Raleway, sans-serif;
+  }
+#intro h1{
+    font-size: 52px; 
+    font-weight: 400;
+    line-height: 1.5;
+    color: darkcyan;
+    text-align: center;
+}
+header li{
+    margin: 0 15px;
+}
+#intro .ml1 {
+    font-weight: 1000;
+    font-size: 3.5em;
+  }
+  
+#intro .ml1 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+  
+#intro .ml1 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
+    padding-bottom: 0.15em;
+  }
+  
+#intro .ml1 .line {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color:darkcyan;
+    transform-origin: 0 0;
+  }
+  
+#intro .ml1 .line1 { top: 0; }
+#intro .ml1 .line2 { bottom: 0; }
+
+/* #second{
+    padding: 80px 0px;
+    background: rgb(248, 248, 248);
+} */
+#second h2{
+   margin-bottom: 30px;
+   font-weight: 1000;
+   color: darkcyan;
+}
+#second .upper{
+    position: relative;
+}
+#second .innertext{
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+}
+#second .innertext span{
+    background: rgba(255,255,255,0.3);
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+#second .innertext h4{
+    font-size: 22px;
+    margin-top: 18px;
+}
+#second .lower h3{
+    font-size: 24px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+#second .outer{
+    background: white;
+    box-shadow: 0 0 8px 0 argb(0,0,0,0.08);
+}
+#second .lower{
+    padding: 6px 20px 20px 20px;
+}
+#second a{
+    color: black;
+}
+
+#second a:hover{
+    text-decoration: none;
+}
+#second h2{
+   margin-bottom: 30px;
+   font-weight: 1000;
+   color: darkcyan;
+}
+#second .upper{
+    position: relative;
+}
+#second .innertext{
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+}
+#second .innertext span{
+    background: rgba(255,255,255,0.3);
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+#second .innertext h4{
+    font-size: 22px;
+    margin-top: 18px;
+}
+#second .lower h3{
+    font-size: 24px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+#second .outer{
+    background: white;
+    box-shadow: 0 0 8px 0 argb(0,0,0,0.08);
+}
+#second .lower{
+    padding: 6px 20px 20px 20px;
+}
+#second a{
+    color: black;
+}
+
+#second a:hover{
+    text-decoration: none;
+}
+
+#third h2{
+    margin-bottom: 30px;
+    font-weight: 1000;
+    color: darkcyan;
+ }
+ #third .upper{
+     position: relative;
+ }
+ #third .innertext{
+     position: absolute;
+     bottom: 24px;
+     left: 24px;
+ }
+ #third .innertext span{
+     background: rgba(255,255,255,0.3);
+     padding: 6px 15px;
+     border-radius: 20px;
+ }
+ #third .innertext h4{
+     font-size: 22px;
+     margin-top: 18px;
+ }
+ #third .lower h3{
+     font-size: 24px;
+     margin-bottom: 12px;
+     margin-top: 12px;
+ }
+ #third .outer{
+     background: white;
+     box-shadow: 0 0 8px 0 argb(0,0,0,0.08);
+ }
+ #third .lower{
+     padding: 6px 20px 20px 20px;
+ }
+ #third a{
+     color: black;
+ }
+ 
+ #third a:hover{
+     text-decoration: none;
+ }
+
+#third h2{
+    margin-top: 100px;
+    margin-bottom: 30px;
+    font-weight: 1000;
+    color: darkcyan;
+ }
+ #laster{
+     margin-top: 100px;
+     margin-bottom: 60px;
+     text-align: center;
+ }
+#laster h4{
+    color: darkcyan;
+    vertical-align: middle;
+    font-family: monospace;
+    }
+
+    .upper {
+        position: relative;
+    }
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(101, 101, 101, 0.6);
+        color: #ffffff;
+        opacity: 0;
+    }
+    .mask h3 {
+        text-align: center;
+    }
+    .upper a:hover .mask {
+        opacity: 1;           
+    }
+    .upper h3{
+        font-weight: 800;
+        margin-top: 60px;
+    }

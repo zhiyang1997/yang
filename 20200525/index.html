@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <title>Home | Yang</title>
+</head>
+<body>  
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <img class="img" src="img/yang.jpg">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <section id="intro">
+    <div class="jumbotron">
+      <div class="container">
+          <div class="row">
+        <div class="col-md-12">
+          <h1 class="ml1">
+            <span class="text-wrapper">
+              <span class="line line1"></span>
+              <span class="letters">YangPage</span>
+              <span class="line line2"></span>
+            </span>
+          </h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml1 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml1 .letter',
+    scale: [0.3,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 600,
+    delay: (el, i) => 70 * (i+1)
+  }).add({
+    targets: '.ml1 .line',
+    scaleX: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700,
+    offset: '-=875',
+    delay: (el, i, l) => 80 * (l - i)
+  }).add({
+    targets: '.ml1',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+  </script>
+  </section>
+
+  <section id="second">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>專題</h2>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+                 <div class="outer">
+                  <div class="upper">
+                      <img style="width: 100%;" src="img/sb1.jpg">
+
+                      <a href="#">
+                        <div class="mask">
+                           <h3>專題實作</h3>
+                            </div>
+                    </a>
+                      <div class="innertext">
+                      </div>
+                  </div>
+                  <div class="lower">
+                  </div>
+                 </div>
+          </div>
+          <div class="col-md-4">
+              <div class="outer">
+                  <div class="upper">
+                      <img style="width: 100%;" src="img/sb2.JPG">
+
+                      <a href="#">
+                        <div class="mask">
+                           <h3>專題實作</h3>
+                            </div>
+                    </a>
+                      <div class="innertext">
+                      </div>
+                  </div>
+                  <div class="lower">
+                  </div>
+                 </div>
+          </div>
+          <div class="col-md-4">
+              <div class="outer">
+                  <div class="upper">
+                      <img style="width: 100%;" src="img/sb3.JPG">
+
+                      <a href="#">
+                        <div class="mask">
+                           <h3>專題實作</h3>
+                            </div>
+                    </a>
+                      <div class="innertext">
+                      </div>
+                  </div>
+                  <div class="lower">
+                  </div>
+                 </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="third">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>影片</h2>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+                 <div class="outer">
+                  <div class="upper">
+                      <img style="width: 100%;" src="img/video1.jpg">
+
+                      <a href="#">
+                        <div class="mask">
+                           <h3>畢業專題影片</h3>
+                            </div>
+                    </a>
+                      <div class="innertext">
+                      </div>
+                  </div>
+                  <div class="lower">
+                  </div>
+                 </div>
+          </div>
+          <div class="col-md-4">
+              <div class="outer">
+                  <div class="upper">
+                      <img style="width: 100%;" src="img/video2.jpg">
+
+                      <a href="#">
+                        <div class="mask">
+                           <h3>影片轉場</h3>
+                            </div>
+                    </a>
+                      <div class="innertext">
+                      </div>
+                  </div>
+                  <div class="lower">
+                  </div>
+                 </div>
+          </div>
+          <div class="col-md-4">
+              <div class="outer">
+                  <div class="upper">
+                      <div class="innertext">
+                      </div>
+                  </div>
+                  <div class="lower">
+                  </div>
+                 </div>
+          </div>
+        </div>
+    </div>
+
+  </section>
+
+  <section id="laster">
+    <div class="col-md-12 text-center">
+      <h4>Yang Editor</h4>
+  </div>
+  </section>
+
+</body>
+</html>
