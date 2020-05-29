@@ -108,6 +108,7 @@ header li{
 }
 #second .upper{
     position: relative;
+    overflow:hidden;
 }
 #second .innertext{
     position: absolute;
@@ -142,6 +143,12 @@ header li{
 #second a:hover{
     text-decoration: none;
 }
+#second img{
+    width: 100%;
+}
+#second img:hover{
+    transform: scale(1.5);
+}
 
 #third h2{
     margin-bottom: 30px;
@@ -151,6 +158,7 @@ header li{
  #third .upper{
      position: relative;
  }
+
  #third .innertext{
      position: absolute;
      bottom: 24px;
@@ -185,6 +193,10 @@ header li{
      text-decoration: none;
  }
 
+#third img{
+    width: 100%;
+}
+
 #third h2{
     margin-top: 100px;
     margin-bottom: 30px;
@@ -202,9 +214,7 @@ header li{
     font-family: monospace;
     }
 
-    .upper {
-        position: relative;
-    }
+
     .mask {
         position: absolute;
         top: 0;
@@ -262,4 +272,3 @@ header li{
         line-height: 1.5;
         color: darkcyan;
     }
-    
