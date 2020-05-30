@@ -299,19 +299,19 @@ header li{
         animation-name: icon;
     }
     #icon1{
-        animation-duration: 2.5s;
-        animation-name: icon;
-    }
-    #icon2{
         animation-duration: 3s;
         animation-name: icon;
     }
+    #icon2{
+        animation-duration: 4s;
+        animation-name: icon;
+    }
     #icon3{
-        animation-duration: 3.5s;
+        animation-duration: 5s;
         animation-name: icon;
     }
     #icon4{
-        animation-duration: 4s;
+        animation-duration: 6s;
         animation-name: icon;
     }
     
