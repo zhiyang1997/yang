@@ -15,11 +15,11 @@
         height: 100vh;
       }
 
-      body {
+      body { 
         display: flex;
         align-items: center;
         color: white;
-        font-size: 80px;
+        font-size: 30px;
       }
 
       path {
