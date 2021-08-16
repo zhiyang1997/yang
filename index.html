@@ -1,222 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | Yang</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    <style>
-      @media only screen and (min-width: 321px) and (max-width: 768px) {
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: "Courier New", Courier, monospace;
-      }
-      .imgbox{
-      width: 250px;
-      height: 250px;  
-      -webkit-clip-path:circle(50% at 50% 50%);
-      border-radius: 50%;
-	    border: 3px solid rgba(0,0,0,1.0);
-      margin: auto;
-      }
-      .img{
-        width:100%;transition: all 0.6s;
-      }
-      .img:hover{
-        transform: scale(1.2);
-      }
-      .topleft {
-        width: 50%;
-        height: 350px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
-        float: left;
-      }
-      .topright{
-        width: 50%;
-        height: 350px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .toptotop {
-        align-self: flex-start;
-        color:cadetblue;
-        font-size: 45pt;
-        font-family: Raleway, sans-serif;
-      }
-      .navbar {
-        background-color: rgb(255, 255, 255);
-        line-height: 70px;
-        text-align: center;
-        box-shadow: 0px 0px 5px 3px rgb(136, 134, 134);
-
-      }
-      .navbar a {
-        color: rgb(145, 145, 145);
-        text-decoration: none;
-        display: inline-block;
-        padding: 5px 30px;
-        line-height: 1.3;
-        transition: 0.5s;
-        font-size: 15pt;
-        font-family:Arial, Helvetica, sans-serif;
-      }
-      .navbar a:hover {
-        color: cadetblue;
-        font-size: 20pt;
-        text-decoration:underline;
-      }
-      .main {
-        height: auto;
-        margin: 0 auto;
-        width: 80%;
-      }
-      .section {
-        height: 500px;
-        padding: 40px 0 0 0;
-        text-align: center;
-      }
-
-      .mainflex {
-        margin: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 400px;
-      }
-      .mianflexin {
-      }
-      .order {
-      height: 60px;
-      line-height: 60px;
-      text-align: center;
-      height: 150px;
-      }
-      .order .line {
-      display: inline-flex;
-      width: 35%;
-      border-top: 3px solid cadetblue;
-      }
-      .order .txt {
-      color: cadetblue;
-      vertical-align: middle;
-      font-family: monospace;
-      font-size: 15pt;
-      }
-    </style>
-    <script>
-      $(function () {
-        // 當#myNavbar上的<a>連結按鈕click時, 讓整頁慢慢滑動到指定位置=============================
-        $("#navbar a").on("click", function (event) {
-          // this.hash 是取得目前URL中的錨點位置,例如:#section1
-          // 當 this.hash (錨點位置) 不是空的時, 也就是有指定滑動到錨點位置時
-          if (this.hash !== "") {
-            // 阻止<a>連結被click時執行連結工作 (雷同return false, 但return false通常寫在最後)
-            event.preventDefault();
-            // 設定 hash 變數, 記錄目前的錨點
-            var hash = this.hash;
-            // 控制 html,body 執行 animate 動畫, 讓捲出的距離 = 目前錨點位置的 offset().top 座標
-            $("html, body")
-              .stop()
-              .animate({ scrollTop: $(hash).offset().top }, 800, function () {
-                // 將錨點名稱加到URL網址列的後方
-                window.location.hash = hash;
-              });
-          } // if end
-        }); // click end
-      });
-      window.onload = function () {
-        new TypeIt("#titleetypeit", {
-          strings: "Yang",
-          speed: 300,
-          waitUntilVisible: true,
-          loop: true,
-        }).go();
-      };
-    </script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>LIFF v2 基本使用筆記及範例 - Augustus - Let's Write</title>
+    <link rel="canonical" href="https://letswritetw.github.io/letswrite-liff-init/"/>
+    <meta property="og:url" content="https://letswritetw.github.io/letswrite-liff-init/"/>
+    <meta property="fb:app_id" content="911000986339138"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Let's Write"/>
+    <meta property="og:title" content="LIFF v2 基本使用筆記及範例 - Augustus - Let's Write"/>
+    <meta itemprop="name" content="LIFF v2 基本使用筆記及範例 - Augustus - Let's Write"/>
+    <meta name="description" content="本篇大綱：本篇要解決的問題。建立 LIFF。LIFF init。取得基本環境資訊。登入、登出。取得使用者資料。傳訊息。連結。打開 QR Code 掃描器。關閉 LIFF。LIFF 轉成公開。範例、原始碼。"/>
+    <meta property="og:description" content="本篇大綱：本篇要解決的問題。建立 LIFF。LIFF init。取得基本環境資訊。登入、登出。取得使用者資料。傳訊息。連結。打開 QR Code 掃描器。關閉 LIFF。LIFF 轉成公開。範例、原始碼。"/>
+    <meta itemprop="description" content="本篇大綱：本篇要解決的問題。建立 LIFF。LIFF init。取得基本環境資訊。登入、登出。取得使用者資料。傳訊息。連結。打開 QR Code 掃描器。關閉 LIFF。LIFF 轉成公開。範例、原始碼。"/>
+    <meta itemprop="image" content="https://letswritetw.github.io/letswrite-liff-init/fb.png"/>
+    <meta property="og:image" content="https://letswritetw.github.io/letswrite-liff-init/fb.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="LIFF v2 基本使用筆記及範例"/>
+    <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+    <link rel="stylesheet" href="dist/style.min.css?v=1.1.3"/>
   </head>
   <body>
-    <div id="0" class="topleft">
-      <div class="imgbox">
-        <img class="img"  src="img/yang1.jpg">
-      </div>
-    </div>
-    <div id="0" class="topright">
-      <h1 id="titleetypeit" class="toptotop"></h1>
-    </div>
-    <nav id="navbar" class="navbar sticky-top">
-      <a href="index.html" style="color: cadetblue;">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="main">
-      <section id="1" class="section">
-        <h1 style="font-family: monospace; color: cadetblue; font-size: 25pt;" >Video</h1>
-        <div class="mainflex">
-          <div class="mianflexin">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/GDp4tOzMh6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="container" id="app">
+      <h1>LIFF v2 基本使用示範</h1>
+      <h6>筆記文：<a href="https://letswrite.tw/liff-init/" target="_blank">Let's Write</a></h6>
+      <section class="row">
+        <div class="twelve column">
+          <!-- 填寫 LIFF ID-->
+          <div class="box">
+            <h2>填寫 LIFF ID 以啟動範例功能</h2>
+            <p>請參考筆記文，建立自己的 LIFF 後，將取得的 LIFF ID 填入以下欄位。</p>
+            <input disabled class="u-full-width" id="liff-input" type="text" value="1656322172-LakKO8Wd"/>
+            <button class="button-primary" id="liff-btn">確認並啟動</button>
           </div>
-          <div class="mianflexin">
-            <p>
-            </p>
+          <!-- 基本環境資訊-->
+          <div class="box">
+            <h2>基本環境資訊</h2>
+            <script src="https://gist.github.com/letswritetw/d789bc9bb90def936d8380f376ff6859.js"></script>
+            <h3>示範</h3>
+            <textarea class="u-full-width" id="result-basic" placeholder="結果會顯示在這"></textarea>
           </div>
-        </div>
-      </section>
-      <section id="2" class="section">
-        <div class="mainflex">
-          <div class="mianflexin">
-            <h1 style="font-family:微軟正黑體 ; color: cadetblue; font-size: 25pt;" >作品</h1>
+          <hr/>
+          <!-- 登入、登出-->
+          <div class="box">
+            <h2>登入、登出</h2>
+            <ul>
+              <li>僅支援外部瀏覽器</li>
+              <li>「redirectUri」的網址必須要在後台中的「Callback URL」先設定好，不然會 400 error</li>
+            </ul>
+            <script src="https://gist.github.com/letswritetw/dbeeaa558161b9eafeb83b09f12dce58.js"></script>
+            <h3>示範</h3>
+            <ul>
+              <li>外部瀏覽器時才有作用</li>
+              <li>登入 / 登出 後，可以看上面的「isLoggedIn」是否有變動，true 為登入、false 為未登入</li>
+            </ul>
+            <button id="login">登入 LINE</button>
+            <button id="logout">登出 LINE</button>
           </div>
-          <div class="mianflexin">
-            <p>
-            </p>
+          <hr/>
+          <!-- 取得使用者資料-->
+          <div class="box">
+            <h2>取得使用者資料</h2>
+            <p>官方提醒：</p>
+            <blockquote>
+              <p>Do not track a user with cookies, localStorage, or sessionStorage or link LINE user information with external session information without getting the user's consent. While you can use cookies, localStorage, or sessionStorage with the LIFF app, their use may be restricted in the future.</p>
+              <p>未經用戶同意，請勿使用 cookie，localStorage 或 sessionStorage 跟踪用戶或將 LINE 用戶信息與外部會話信息鏈接。雖然您可以通過 LIFF 應用程序使用 cookie，localStorage 或 sessionStorage，但將來可能會限制它們的使用。</p>
+            </blockquote>
+            <script src="https://gist.github.com/letswritetw/1e0bc0ad0b62cefc353e294bcee4de58.js"></script>
+            <h3>示範</h3>
+            <p>需先登入 LINE</p>
+            <button id="getContext">取得使用者類型資料</button>
+            <button id="profile">取得使用者公開資料</button>
+            <button id="getEmail">取得使用者 email</button>
+            <textarea class="u-full-width" id="result-info" placeholder="結果會顯示在這"></textarea>
           </div>
-        </div>
-      </section>
-      <!-----<section id="3" class="section">
-        <div class="mainflex">
-          <div class="mianflexin">
-            <h1>333</h1>
-          </div>
-          <div class="mianflexin">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-              ipsa. Dolorem quia nam iste ea at, necessitatibus odit enim
-              aspernatur, voluptatum, laudantium eaque esse voluptas. Sed labore
-              tenetur consequuntur excepturi. Asperiores repellat iste eos?
-              Dolore, neque? Necessitatibus, quod. Molestiae, ea! Ullam sequi
-              iure, animi quisquam iste aliquam minus excepturi unde vel
-              voluptatum explicabo tempore culpa ut hic fugiat consectetur
-              temporibus. Neque eaque qui amet pariatur voluptas, assumenda quo
-              doloremque sapiente, labore ad vitae. Consequatur saepe
-              consectetur, sit, minima natus ab quibusdam expedita et rerum
-              quia, nisi blanditiis repudiandae at veritatis! Illum officia
-              pariatur laudantium voluptas quae deserunt sunt sequi explicabo
-              nihil quod magni magnam cum dolores perspiciatis libero amet,
-              laboriosam eius rerum porro fuga, distinctio eum? Maxime ab fugit
-              animi? Mollitia earum nam delectus consequuntur provident
-              laboriosam atque accusamus dolorem, corrupti blanditiis laudantium
-              eligendi placeat voluptas commodi quasi, possimus facilis totam.
-              Quibusdam aut et itaque obcaecati unde aspernatur commodi vitae!
-            </p>
-          </div>
-        </div>
-      </section> -->
-    </div>
-    <div class="order">
-      <span style="white-space:pre">   </span><span class="line"></span>
-      <span style="white-space:pre">   </span><span class="txt" style="color: cadetblue; font-size: 15pt;">Yang Editor</span>
-      <span style="white-space:pre">   </span><span class="line"></span>
-  </div>
+          <hr/>
+          
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="dist/main.min.js?v=1.1.4"></script>
   </body>
 </html>
