@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>LIFF v2 基本使用筆記及範例 - Augustus - Let's Write</title>
+    <link rel="canonical" href="https://letswritetw.github.io/letswrite-liff-init/"/>
+    <meta property="og:url" content="https://letswritetw.github.io/letswrite-liff-init/"/>
+    <meta property="fb:app_id" content="911000986339138"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Let's Write"/>
+    <meta property="og:title" content="LIFF v2 基本使用筆記及範例 - Augustus - Let's Write"/>
+    <meta itemprop="name" content="LIFF v2 基本使用筆記及範例 - Augustus - Let's Write"/>
+    <meta name="description" content="本篇大綱：本篇要解決的問題。建立 LIFF。LIFF init。取得基本環境資訊。登入、登出。取得使用者資料。傳訊息。連結。打開 QR Code 掃描器。關閉 LIFF。LIFF 轉成公開。範例、原始碼。"/>
+    <meta property="og:description" content="本篇大綱：本篇要解決的問題。建立 LIFF。LIFF init。取得基本環境資訊。登入、登出。取得使用者資料。傳訊息。連結。打開 QR Code 掃描器。關閉 LIFF。LIFF 轉成公開。範例、原始碼。"/>
+    <meta itemprop="description" content="本篇大綱：本篇要解決的問題。建立 LIFF。LIFF init。取得基本環境資訊。登入、登出。取得使用者資料。傳訊息。連結。打開 QR Code 掃描器。關閉 LIFF。LIFF 轉成公開。範例、原始碼。"/>
+    <meta itemprop="image" content="https://letswritetw.github.io/letswrite-liff-init/fb.png"/>
+    <meta property="og:image" content="https://letswritetw.github.io/letswrite-liff-init/fb.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="LIFF v2 基本使用筆記及範例"/>
+    <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+    <link rel="stylesheet" href="dist/style.min.css?v=1.1.3"/>
+  </head>
+  <body>
+    <div class="container" id="app">
+      <h1>LIFF v2 基本使用示範</h1>
+      <h6>筆記文：<a href="https://letswrite.tw/liff-init/" target="_blank">Let's Write</a></h6>
+      <section class="row">
+        <div class="twelve column">
+          <!-- 填寫 LIFF ID-->
+          <div class="box">
+            <h2>填寫 LIFF ID 以啟動範例功能</h2>
+            <p>請參考筆記文，建立自己的 LIFF 後，將取得的 LIFF ID 填入以下欄位。</p>
+            <input disabled class="u-full-width" id="liff-input" type="text" value="1656322172-LakKO8Wd"/>
+            <button class="button-primary" id="liff-btn">確認並啟動</button>
+          </div>
+          <!-- 基本環境資訊-->
+          <div class="box">
+            <h2>基本環境資訊</h2>
+            <script src="https://gist.github.com/letswritetw/d789bc9bb90def936d8380f376ff6859.js"></script>
+            <h3>示範</h3>
+            <textarea class="u-full-width" id="result-basic" placeholder="結果會顯示在這"></textarea>
+          </div>
+          <hr/>
+          <!-- 取得使用者資料-->
+          <div class="box">
+            <h2>取得使用者資料</h2>
+            <p>官方提醒：</p>
+            <blockquote>
+              <p>Do not track a user with cookies, localStorage, or sessionStorage or link LINE user information with external session information without getting the user's consent. While you can use cookies, localStorage, or sessionStorage with the LIFF app, their use may be restricted in the future.</p>
+              <p>未經用戶同意，請勿使用 cookie，localStorage 或 sessionStorage 跟踪用戶或將 LINE 用戶信息與外部會話信息鏈接。雖然您可以通過 LIFF 應用程序使用 cookie，localStorage 或 sessionStorage，但將來可能會限制它們的使用。</p>
+            </blockquote>
+            <script src="https://gist.github.com/letswritetw/1e0bc0ad0b62cefc353e294bcee4de58.js"></script>
+            <h3>示範</h3>
+            <p>需先登入 LINE</p>
+            <button id="getContext">取得使用者類型資料</button>
+            <button id="profile">取得使用者公開資料</button>
+            <button id="getEmail">取得使用者 email</button>
+            <textarea class="u-full-width" id="result-info" placeholder="結果會顯示在這"></textarea>
+          </div>
+          <hr/>
+          
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="dist/main.min.js?v=1.1.4"></script>
+  </body>
+</html>
