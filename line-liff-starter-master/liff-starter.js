@@ -5,7 +5,7 @@ window.onload = function (e) {
 };
 
 function initializeApp(data) {
-    document.getElementById('displaynamefield').textContent = profile.displayName;
+    document.getElementById('displaynamefield').textContent = data.displayName;
     document.getElementById('languagefield').textContent = data.language;
     document.getElementById('viewtypefield').textContent = data.context.viewType;
     document.getElementById('useridfield').textContent = data.context.userId;
