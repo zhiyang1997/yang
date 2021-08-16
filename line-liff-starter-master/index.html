@@ -5,34 +5,36 @@
 </head>
 
 <body>
-    <div class="buttongroup">
-        <div class="buttonrow">
-            <button id="getprofilebutton">Get Profile</button>
-        </div>
-    </div>
-
-
-    <div id="profileinfo">
-        <h2>Profile</h2>
-        <a href="#" onclick="toggleProfileData()">Close Profile</a>
-        <div id="profilepicturediv">
-        </div>
+    <div id="liffdata">
+        <h2>LIFF Data</h2>
         <table border="1">
             <tr>
-                <th>userId</th>
-                <td id="useridprofilefield"></td>
+                <th>language</th>
+                <td id="languagefield"></td>
             </tr>
             <tr>
-                <th>displayName</th>
-                <td id="displaynamefield"></td>
+                <th>context.viewType</th>
+                <td id="viewtypefield"></td>
             </tr>
             <tr>
-                <th>statusMessage</th>
-                <td id="statusmessagefield"></td>
+                <th>context.userId</th>
+                <td id="useridfield"></td>
+            </tr>
+            <tr>
+                <th>context.utouId</th>
+                <td id="utouidfield"></td>
+            </tr>
+            <tr>
+                <th>context.roomId</th>
+                <td id="roomidfield"></td>
+            </tr>
+            <tr>
+                <th>context.groupId</th>
+                <td id="groupidfield"></td>
             </tr>
         </table>
     </div>
-
+    
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="liff-starter.js"></script>
 </body>
