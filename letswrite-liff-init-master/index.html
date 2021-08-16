@@ -46,8 +46,8 @@
           <div class="box">
             <h2>填寫 LIFF ID 以啟動範例功能</h2>
             <p>請參考筆記文，建立自己的 LIFF 後，將取得的 LIFF ID 填入以下欄位。</p>
-            <input disabled class="u-full-width" id="liff-input" type="text" value="1656322172-LakKO8Wd"/>
-            <button class="button-primary" id="liff-btn">綁定</button>
+            <input class="u-full-width" id="liff-input" type="text" placeholder="請填入LIFF ID"/>
+            <button class="button-primary" id="liff-btn">確認並啟動</button>
           </div>
           <!-- 基本環境資訊-->
           <div class="box">
@@ -58,7 +58,7 @@
           </div>
           <hr/>
           <!-- 登入、登出-->
-          <!---<div class="box">
+          <div class="box">
             <h2>登入、登出</h2>
             <ul>
               <li>僅支援外部瀏覽器</li>
@@ -73,7 +73,7 @@
             <button id="login">登入 LINE</button>
             <button id="logout">登出 LINE</button>
           </div>
-          <hr/>-->
+          <hr/>
           <!-- 取得使用者資料-->
           <div class="box">
             <h2>取得使用者資料</h2>
@@ -92,7 +92,7 @@
           </div>
           <hr/>
           <!-- 傳訊息-->
-          <!--<div class="box">
+          <div class="box">
             <h2>傳訊息</h2>
             <ul>
               <li>會用你的帳號傳訊息</li>
@@ -109,9 +109,9 @@
             <button id="sendMessage">傳送訊息</button>
             <button id="sendShareTarget">傳送訊息給朋友</button>
           </div>
-          <hr/>-->
+          <hr/>
           <!-- 連結-->
-          <!--<div class="box">
+          <div class="box">
             <h2>連結</h2>
             <script src="https://gist.github.com/letswritetw/6b77b5af7c5c2ce1ed87bcc909e743e8.js"></script>
             <h3>示範</h3>
@@ -126,9 +126,9 @@
               </div>
             </div>
           </div>
-          <hr/>連結-->
+          <hr/>
           <!-- 掃描器-->
-          <!--<div class="box">
+          <div class="box">
             <h2>掃描器</h2>
             <ol>
               <li>僅支援在 LINE App 內開啟時</li>
@@ -140,9 +140,9 @@
             <input class="u-full-width" id="result-qr" type="text" placeholder="這邊會顯示掃描後的結果"/>
             <button id="qrScan">打開 QR code 掃描器</button>
           </div>
-          <hr/>連結-->
+          <hr/>
           <!-- 關閉-->
-          <!--<div class="box">
+          <div class="box">
             <h2>關閉 LIFF</h2>
             <p>僅支援在 LINE App 內開啟時</p>
             <script src="https://gist.github.com/letswritetw/229c09fe6a65788a3fd68c8c09c197ba.js"></script>
@@ -150,7 +150,7 @@
           </div>
         </div>
       </section>
-    </div>-->
+    </div>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="dist/main.min.js?v=1.1.4"></script>
   </body>
