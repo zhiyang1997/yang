@@ -27,11 +27,9 @@ window.addEventListener('load', () => {
       isLoggedIn = liff.isLoggedIn(); // Boolean。使用者是否登入 LINE 帳號。true 時，可呼叫需要 Access Token 的 API
       os = liff.getOS(); // String。回傳使用者作業系統：ios、android、web
       lineVersion = liff.getLineVersion(); // 使用者的 LINE 版本
-      const context = liff.getContext();
-      outputContent.value = `${JSON.stringify(context)}`
 
       const outputBasic = document.getElementById('result-basic');
-      outputBasic.value = `language: ${language}\nversion: ${version}\nisInClient: ${isInClient}\nisLoggedIn: ${isLoggedIn}\nos: ${os}\nlineVersion: ${lineVersion}\ncontext:${JSON.stringify(context)}`;
+      outputBasic.value = `language: ${language}\nversion: ${version}\nisInClient: ${isInClient}\nisLoggedIn: ${isLoggedIn}\nos: ${os}\nlineVersion: ${lineVersion}`;
 
 
 
