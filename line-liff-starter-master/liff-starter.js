@@ -15,7 +15,7 @@ function initializeApp(data) {
     // openWindow call
     document.getElementById('openwindowbutton').addEventListener('click', function () {
         liff.openWindow({
-            url: 'https://zhiyang1997.github.io/yang/letswrite-liff-starter-master/index.html'
+            url: 'https://zhiyang1997.github.io/yang/line-liff-starter-master/index.html'
         });
     });
 
