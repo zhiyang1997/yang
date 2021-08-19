@@ -12,9 +12,9 @@
         //init LIFF
         function initializeApp(data) {
             //取得QueryString
-            let urlParams = new URLSearchParams(window.location.search);
+            //let urlParams = new URLSearchParams(window.location.search);
             //顯示QueryString
-            $('#QueryString').val(urlParams.toString());
+            //$('#QueryString').val(urlParams.toString());
             //顯示UserId
             $('#userid').val(data.context.userId);
         }
@@ -40,17 +40,17 @@
             });
 
             //ButtonSendMsg
-            $('#ButtonSendMsg').click(function () {
-                liff.sendMessages([
-                 {
-                     type: 'text',
-                     text: $('#msg').val()
-                 }
-                ])
-               .then(() => {
-                   alert('done');
-               })
-            });
+            //$('#ButtonSendMsg').click(function () {
+            //    liff.sendMessages([
+            //     {
+            //         type: 'text',
+            //         text: $('#msg').val()
+            //     }
+            //    ])
+            //   .then(() => {
+            //       alert('done');
+            //   })
+            //});
         });
     </script>
 </head>
@@ -59,13 +59,13 @@
             <div class="col-md-6" style="margin:5px">
                 <label>user id:</label>
                 <input class="form-control" type="text" id="userid" />   <br />
-                <label>QueryString:</label>
-                <input class="form-control" type="text" id="QueryString" /><br />
+                <!--<label>QueryString:</label>
+                <input class="form-control" type="text" id="QueryString" /><br />-->
                 <button class="btn btn-primary" id="ButtonGetProfile">Get Profile</button>
                 <input class="form-control" type="text" id="UserInfo" /><br />
-                <label>要傳送的訊息:</label>
+                <!--<label>要傳送的訊息:</label>
                 <input class="form-control" type="text" id="msg" value="測試" /><br />
-                <button class="btn btn-primary" id="ButtonSendMsg"  >要傳送的訊息</button>
+                <button class="btn btn-primary" id="ButtonSendMsg"  >要傳送的訊息</button>-->
             </div>
         </div>
 </body>
