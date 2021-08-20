@@ -3,7 +3,6 @@
 <head>
      <meta name="viewport" content="width=device-width, initial-scale=1" />
      <title>LIFF 表單測試</title>
-     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
  </head>
@@ -23,29 +22,8 @@
  
      <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
      <script>
-        function initializeLiff(myLiffId) {
-          liff
-            .init({
-              liffId: myLiffId,
-            })
-            .then(() => {
-              alert('LIFF init success!');
-            })
-            .catch(err => {
-              alert(`error: ${JSON.stringify(err)}`);
-            });
-        }
-  
-        document.addEventListener('DOMContentLoaded', () => {
-          fetch(`/send-id`)
-            .then(reqResponse => reqResponse.json())
-            .then(jsonResponse => {
-              let myLiffId = jsonResponse.id;
-              initializeLiff(myLiffId);
-            })
-            .catch(err => {
-              alert(`error: ${JSON.stringify(err)}`);
-            });
+         liff.init(function (data) {
+            $('#name').val(data.context.userId);    //直接取得 userId
         });
       </script>
 </body>
