@@ -22,9 +22,32 @@
  
      <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
      <script>
-         liff.init(function (data) {
-            $('#name').val(data.context.userId);    //直接取得 userId
+        //init LIFF
+        function initializeApp(data) {
+            //顯示UserId
+            $('#name').val(data.context.userId);
+        }
+
+        //ready
+        $(function () {
+            //init LIFF
+            liff.init(function (data) {
+                initializeApp(data);
+            });
+
+            //ButtonGetProfile
+            $('#ButtonGetProfile').click(function () {
+                //取得User Proile
+                liff.getProfile().then(
+                    profile=> {
+                        //顯示在text box中
+                        $('#UserInfo').val(profile.displayName);
+                        //居然可以alert
+                        alert('done');
+                    }
+                );
+            });
         });
-      </script>
+    </script>
 </body>
 </html>
