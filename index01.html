@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <title>LIFF 表單測試</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ </head>
+ <body>
+     <div class="row" style="margin: 10px">
+         <div class="col-12" style="margin: 10px">
+             <label>信箱：</label>
+             <input type="text" id="name" class="form-control" />
+             <br />
+             <label>驗證碼：</label>
+             <input type="text" id="identify"　class="form-control" />
+             <br />
+             <button class="btn btn-success btn-block" id="send">寄送驗證碼</button>
+             <button class="btn btn-success btn-block" id="sure">確認</button>
+         </div>
+     </div>
+ 
+     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+     <script>
+         liff.init(function (data) {
+            $('#name').val(data.context.userId);    //直接取得 userId
+        });
+      </script>
+</body>
+</html>
