@@ -10,13 +10,13 @@
         <p>信箱：</p>
         <input type="text" id="email">
         <p>驗證碼：</p>
-        <input type="text"></br>
+        <input type="text" id="code"></br>
         <button type="button" id="send">寄送驗證碼</button>
-        <button type="button">確認</button>
-        <p>userId:<span id="userId"></span></p>
-        <p>displayName:<span id="displayName"></span></p>
-        <p>pictureUrl:<span id="pictureUrl"></span></p>
-        <p>statusMessage:<span id="statusMessage"></span></p>
+        <button type="button" id="sure">確認</button>
+        <p style="display: none;">userId:<span id="userId"></span></p>
+        <p style="display: none;">displayName:<span id="displayName"></span></p>
+        <p style="display: none;">pictureUrl:<span id="pictureUrl"></span></p>
+        <p style="display: none;">statusMessage:<span id="statusMessage"></span></p>
     </body>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
@@ -35,24 +35,83 @@
               document.getElementById('pictureUrl').innerHTML = profile.pictureUrl
               document.getElementById('statusMessage').innerHTML = profile.statusMessage
           })
+          
         },
         err => {
           // LIFF initialization failed
           
         });
 
-        if(document.getElementById('send').clicked == true)
+       document.getElementById('send').onclick = function()
         {
-            var requestOptions = {
-                method: 'POST',
-                redirect: 'follow'
-            };
+            var emailElement = document.getElementById('email')
+            var email = emailElement.value
+            var request = new XMLHttpRequest();
+            // POST to httpbin which returns the POST data as JSON
+            request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
 
-            fetch("https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail", requestOptions)
-                .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
+            var formData = new FormData();
+            formData.append('UserId', email);
+
+            request.send(formData);
+            console.log(request.responseText);
+            var callbackData = JSON.parse(request.responseText);
+            var str = callbackData.description;
+            if (str == "寄送Email成功"){
+                alert("已寄出驗證碼");
+            }
+            else if (str == "使用者驗證碼程序錯誤。使用者帳號[UserId]不存在"){
+                alert("信箱未註冊請重新輸入");
+            }
+            else if (str == "[UserId]為必填參數"){
+                alert("請填入信箱");
+            }
+            else if (str == "使用者驗證碼程序錯誤。已寄送驗證碼，請稍後在試"){
+                alert("已寄送驗證碼，請稍後在試");
+            }
+            else if (str == "使用者驗證碼程序錯誤。"){
+                alert("使用者驗證碼程序錯誤。");
+            }
         }
 
+        
+
+       document.getElementById('sure').onclick = function()
+        {
+            var emailElement = document.getElementById('email')
+            var email = emailElement.value
+            var codeElement = document.getElementById('code')
+            var code = codeElement.value
+            var userIdElement = document.getElementById('userId')
+            var userId = userIdElement.value
+            var request = new XMLHttpRequest();
+            // POST to httpbin which returns the POST data as JSON
+            request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
+
+            var formData = new FormData();
+            formData.append('UserId', email);
+            formData.append('LineId', userId);
+            formData.append('Code', code);
+
+            request.send(formData);
+            console.log(request.response);
+            var callbackData = JSON.parse(request.responseText);
+            var str = callbackData.description;
+            if (str == "綁定成功"){
+                alert("綁定成功");
+            }
+            else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
+                alert("驗證碼錯誤");
+            }
+            else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
+                alert("綁定錯誤請重試");
+            }
+            else if (str == "(發生錯誤)--"){
+                alert("發生錯誤");
+            }
+            else if (str == "使用者驗證碼程序錯誤。"){
+                alert("使用者驗證碼程序錯誤。");
+            }
+        }
     </script>
 </html>
