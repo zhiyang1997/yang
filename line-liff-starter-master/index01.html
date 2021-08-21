@@ -14,32 +14,36 @@
             <p class="mail" style="text-align: left;">信箱：</p>
             <input type="text" id="email" placeholder="信箱">
             <p class="password"  style="text-align: left;">驗證碼：</p>
-            <input type="text" id="code" placeholder="驗證碼"></br>
+            <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)"></br>
             <button type="button" id="send">寄送驗證碼</button>
-            <button type="button" id="sure">確認</button>
-            <p>userId:<span id="userId"></span></p>
+            <button type="button" id="sure" disabled>進行綁定</button>
+            <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">userId:<span id="userId"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">displayName:<span id="displayName"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">pictureUrl:<span id="pictureUrl"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">statusMessage:<span id="statusMessage"></span></p>
-        </div>    
+        </div>                                                                                                              
     </body>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
         liff.init(data => {
           liff.getProfile().then(profile => {
-              document.getElementById('userId').innerHTML = profile.userId
-              document.getElementById('displayName').innerHTML = profile.displayName
-              document.getElementById('pictureUrl').innerHTML = profile.pictureUrl
-              document.getElementById('statusMessage').innerHTML = profile.statusMessage
-          })
-          
-        },
-        err => {
-          // LIFF initialization failed
-          
-        });
+                        document.getElementById('userId').innerHTML = profile.userId
+                        document.getElementById('displayName').innerHTML = profile.displayName
+                        document.getElementById('pictureUrl').innerHTML = profile.pictureUrl
+                        document.getElementById('statusMessage').innerHTML = profile.statusMessage
+                    })
+                    
+                    },
+                    err => {
+                    // LIFF initialization failed
+                    
+                    });
 
-       document.getElementById('send').onclick = function()
+        
+
+
+
+        document.getElementById('send').onclick = function()
         {
             var emailElement = document.getElementById('email')
             var email = emailElement.value
@@ -69,11 +73,13 @@
             else if (str == "使用者驗證碼程序錯誤。"){
                 alert("使用者驗證碼程序錯誤。");
             }
+            
+            
         }
 
         
 
-       document.getElementById('sure').onclick = function()
+        document.getElementById('sure').onclick = function()
         {
             
             var emailElement = document.getElementById('email')
@@ -112,6 +118,25 @@
                 alert("使用者驗證碼程序錯誤。");
             }
         }
+
+
+        function manage(txt){
+            var sure = document.getElementById('sure');
+            if (txt.value !=''){
+                sure.disabled = false;
+                sure.style.background = "#df5334";
+            }
+            else{
+                sure.disabled = true;
+                sure.style.background = "#4e4e4d"; 
+            }
+        }   
+
+
+
+
+
+
     </script>
     <style>
         *{
@@ -163,9 +188,20 @@
         text-align:center; 
         }
 
-        #send,#sure{
+        #send{
         color: white;  
         background: #df5334;
+        width: 200px;
+        height: 30px;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 0px;
+        }
+
+        #sure{
+        color: white;  
+        background: #4e4e4d;
         width: 200px;
         height: 30px;
         margin: 10px;
