@@ -7,10 +7,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-        <title>綁定</title>
+        <title>園區情資通LINE帳號綁定</title>
     </head>
     <body>
         <div class="container">
+            <h5>園區情資通LINE帳號綁定</h5>
             <p class="mail" style="text-align: left;">信箱：</p>
             <input type="text" id="email" placeholder="信箱">
             <p class="password"  style="text-align: left;">驗證碼：</p>
@@ -42,81 +43,91 @@
         
 
 
-
         document.getElementById('send').onclick = function()
         {
-            var emailElement = document.getElementById('email')
-            var email = emailElement.value
-            var request = new XMLHttpRequest();
-            // POST to httpbin which returns the POST data as JSON
-            request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
+            var email = document.getElementById("email").value;
+            if(email != ""){
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if(!isok){
+                    alert("Email格式錯誤，請重新輸入！")
+                    document.getElementById("email").focus();
+                    return false;
+                }else{
+                var request = new XMLHttpRequest();
+                // POST to httpbin which returns the POST data as JSON
+                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
 
-            var formData = new FormData();
-            formData.append('UserId', email);
+                var formData = new FormData();
+                formData.append('UserId', email);
 
-            request.send(formData);
-            console.log(request.responseText);
-            var callbackData = JSON.parse(request.responseText);
-            var str = callbackData.description;
-            if (str == "寄送Email成功"){
-                alert("已寄出驗證碼");
+                request.send(formData);
+                console.log(request.responseText);
+                var callbackData = JSON.parse(request.responseText);
+                var str = callbackData.description;
+                if (str == "寄送Email成功"){
+                    alert("已寄出驗證碼，請察看信箱");
+                }
+                else if (str == "使用者驗證碼程序錯誤。使用者帳號[UserId]不存在"){
+                    alert("信箱未註冊請重新輸入");
+                }
+                else if (str == "[UserId]為必填參數"){
+                    alert("請填入信箱");
+                }
+                else if (str == "使用者驗證碼程序錯誤。已寄送驗證碼，請稍後在試"){
+                    alert("已寄送驗證碼，請稍後在試");
+                }
+                else if (str == "使用者驗證碼程序錯誤。"){
+                    alert("使用者驗證碼程序錯誤。");
+                }
+                }
             }
-            else if (str == "使用者驗證碼程序錯誤。使用者帳號[UserId]不存在"){
-                alert("信箱未註冊請重新輸入");
-            }
-            else if (str == "[UserId]為必填參數"){
-                alert("請填入信箱");
-            }
-            else if (str == "使用者驗證碼程序錯誤。已寄送驗證碼，請稍後在試"){
-                alert("已寄送驗證碼，請稍後在試");
-            }
-            else if (str == "使用者驗證碼程序錯誤。"){
-                alert("使用者驗證碼程序錯誤。");
-            }
-            
-            
+
         }
-
-        
-
         document.getElementById('sure').onclick = function()
         {
-            
-            var emailElement = document.getElementById('email')
-            var email = emailElement.value
-            var codeElement = document.getElementById('code')
-            var code = codeElement.value
-            var userIdElement = document.getElementById('userId')
-            var userId = userIdElement.innerHTML
-            console.log(userId);
-            var request = new XMLHttpRequest();
-            // POST to httpbin which returns the POST data as JSON
-            request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
+            var emailcheck = document.getElementById('email').value
+            var codecheck = document.getElementById("code").value;
+            if(codecheck.length == 6 && emailcheck != ""){
+                var emailElement = document.getElementById('email')
+                var email = emailElement.value
+                var codeElement = document.getElementById('code')
+                var code = codeElement.value
+                var userIdElement = document.getElementById('userId')
+                var userId = userIdElement.innerHTML
+                console.log(userId);
+                var request = new XMLHttpRequest();
+                // POST to httpbin which returns the POST data as JSON
+                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
 
-            var formData = new FormData();
-            formData.append('UserId', email);
-            formData.append('LineId', userId);
-            formData.append('Code', code);
+                var formData = new FormData();
+                formData.append('UserId', email);
+                formData.append('LineId', userId);
+                formData.append('Code', code);
 
-            request.send(formData);
-            console.log(request.response);
-            var callbackData = JSON.parse(request.responseText);
-            var str = callbackData.description;
-            if (str == "綁定成功"){
-                alert("綁定成功");
+                request.send(formData);
+                console.log(request.response);
+                var callbackData = JSON.parse(request.responseText);
+                var str = callbackData.description;
+                if (str == "綁定成功"){
+                    alert("綁定成功");
+                }
+                else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
+                    alert("驗證碼錯誤");
+                }
+                else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
+                    alert("綁定錯誤請重試");
+                }
+                else if (str == "(發生錯誤)--"){
+                    alert("發生錯誤");
+                }
+                else if (str == "使用者驗證碼程序錯誤。"){
+                    alert("使用者驗證碼程序錯誤。");
+                }
+            }else{
+                alert("驗證碼格式錯誤，或者Email未輸入。");
             }
-            else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
-                alert("驗證碼錯誤");
-            }
-            else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
-                alert("綁定錯誤請重試");
-            }
-            else if (str == "(發生錯誤)--"){
-                alert("發生錯誤");
-            }
-            else if (str == "使用者驗證碼程序錯誤。"){
-                alert("使用者驗證碼程序錯誤。");
-            }
+
         }
 
 
@@ -124,7 +135,7 @@
             var sure = document.getElementById('sure');
             if (txt.value !=''){
                 sure.disabled = false;
-                sure.style.background = "#df5334";
+                sure.style.background = "#781623";
             }
             else{
                 sure.disabled = true;
@@ -147,19 +158,27 @@
         background-color: gainsboro;
         }
 
-        #username, #password, h3, #fullname, #comfirm_password,#username2, #password2{
+        #username, #password, #fullname, #comfirm_password,#username2, #password2{
         width: 200px;
         height: 20px;
         margin: 10px;
-        color: #df5334;
+        color: #781623;
         }
 
         h5{
+        text-align: center;
+        width: 190px;
+        height: 15px;
+        margin: 10px;
+        color: #781623;
+        }
+
+        h6{
         margin: 20px;
         color: #a3a2a3;
         }
 
-        h5:hover{
+        h6:hover{
         color: black;
         }
 
@@ -170,7 +189,7 @@
         height: 300px;
         background-color: white;
         border-radius: 5px;
-        border-top: 10px solid #df5334;
+        border-top: 10px solid #781623;
         box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
         
         /*定位對齊*/
@@ -190,7 +209,7 @@
 
         #send{
         color: white;  
-        background: #df5334;
+        background: #781623;
         width: 200px;
         height: 30px;
         margin: 10px;
