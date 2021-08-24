@@ -16,9 +16,9 @@
         <div class="container">
             <h5>園區情資通LINE帳號綁定</h5>
             <p class="mail" style="text-align: left;">信箱：</p>
-            <input type="text" id="email" placeholder="信箱" style="width: auto;">
+            <input type="text" id="email" placeholder="信箱">
             <p class="password"  style="text-align: left;">驗證碼：</p>
-            <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)" style="width: auto;"></br>
+            <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)"></br>
             <button type="button" id="send">寄送驗證碼</button>
             <button type="button" id="sure" disabled>進行綁定</button>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">userId:<span id="userId"></span></p>
@@ -254,6 +254,7 @@
         border: none; 
         border:solid 1px #ccc;
         border-radius: 5px;
+        width: 200px;
         }
     </style>
 </html>
