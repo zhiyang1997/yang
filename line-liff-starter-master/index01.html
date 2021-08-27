@@ -47,8 +47,6 @@
                     
                     });
 
-        
-
 
         document.getElementById('send').onclick = function()
         {
@@ -89,6 +87,9 @@
                 }
                 }
             }
+            else{
+                alert("請填入信箱");
+            }
 
         }
         document.getElementById('sure').onclick = function()
@@ -96,45 +97,49 @@
             var emailcheck = document.getElementById('email').value
             var codecheck = document.getElementById("code").value;
             if(codecheck.length == 6 && emailcheck != ""){
-                var emailElement = document.getElementById('email')
-                var email = emailElement.value
-                var codeElement = document.getElementById('code')
-                var code = codeElement.value
-                var userIdElement = document.getElementById('userId')
-                var userId = userIdElement.innerHTML
-                console.log(userId);
-                var request = new XMLHttpRequest();
-                // POST to httpbin which returns the POST data as JSON
-                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                isok= reg.test(email );
+                if(!isok){
+                    alert("Email格式錯誤，請重新輸入！")
+                    document.getElementById("email").focus();
+                    return false;
+                }else{
+                    var emailElement = document.getElementById('email')
+                    var email = emailElement.value
+                    var codeElement = document.getElementById('code')
+                    var code = codeElement.value
+                    var userIdElement = document.getElementById('userId')
+                    var userId = userIdElement.innerHTML
+                    console.log(userId);
+                    var request = new XMLHttpRequest();
+                    // POST to httpbin which returns the POST data as JSON
+                    request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
 
-                var formData = new FormData();
-                formData.append('UserId', email);
-                formData.append('LineId', userId);
-                formData.append('Code', code);
+                    var formData = new FormData();
+                    formData.append('UserId', email);
+                    formData.append('LineId', userId);
+                    formData.append('Code', code);
 
-                request.send(formData);
-                console.log(request.response);
-                var callbackData = JSON.parse(request.responseText);
-                var str = callbackData.description;
-                if (str == "綁定成功"){
-                    alert("綁定成功");
-                }
-                else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
-                    alert("驗證碼錯誤");
-                }
-                else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
-                    alert("綁定錯誤請重試");
-                }
-                else if (str == "(發生錯誤)--"){
-                    alert("發生錯誤");
-                }
-                else if (str == "使用者驗證碼程序錯誤。"){
-                    alert("使用者驗證碼程序錯誤。");
-                }
-            }else{
-                alert("驗證碼格式錯誤，或者Email未輸入。");
+                    request.send(formData);
+                    console.log(request.response);
+                    var callbackData = JSON.parse(request.responseText);
+                    var str = callbackData.description;
+                    if (str == "綁定成功"){
+                        alert("綁定成功");
+                    }
+                    else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
+                        alert("驗證碼錯誤");
+                    }
+                    else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
+                        alert("綁定錯誤請重試");
+                    }
+                    else if (str == "(發生錯誤)--"){
+                        alert("發生錯誤");
+                    }
+                    else if (str == "使用者驗證碼程序錯誤。"){
+                        alert("使用者驗證碼程序錯誤。");
+                    }
             }
-
         }
 
 
@@ -150,9 +155,7 @@
             }
         }   
 
-
-
-
+    }
 
 
     </script>
