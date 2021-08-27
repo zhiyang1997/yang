@@ -126,17 +126,25 @@
                     var str = callbackData.description;
                 if (str == "綁定成功"){
                     alert("綁定成功");
-                    liff.sendMessages([
-                    {
-                        type: 'text',
-                        text: 'Hello, World!'
-                    }
-                    ]).then(function(res) {
-                        console.log(res)
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    });
+                    liff.sendMessages([{
+                        "type": "flex",
+                        "altText": "恭喜您綁定成功!",
+                        "contents": {
+                            "type": "bubble",
+                            "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [{
+                                "type": "button",
+                                "action": {
+                                "data": "postback",
+                                "label": "postback",
+                                "type": "postback"
+                                }
+                            }]
+                            }
+                        }
+                        }]).catch(err => { alert(err.message) })
                 }
                 else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
                     alert("驗證碼錯誤");
