@@ -128,7 +128,7 @@
                     alert("綁定成功");
                     liff.sendMessages([{
                         "type": "flex",
-                        "altText": "恭喜您綁定成功!",
+                        "altText": "test",
                         "contents": {
                             "type": "bubble",
                             "body": {
@@ -137,9 +137,9 @@
                             "contents": [{
                                 "type": "button",
                                 "action": {
-                                "data": "postback",
-                                "label": "postback",
-                                "type": "postback"
+                                "label": "uri",
+                                "type": "uri",
+                                "uri": "https://www.google.com"
                                 }
                             }]
                             }
