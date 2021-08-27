@@ -71,7 +71,7 @@
                 var callbackData = JSON.parse(request.responseText);
                 var str = callbackData.description;
                 if (str == "寄送Email成功"){
-                    alert("已寄出驗證碼，請察看信箱");
+                    alert("已寄出驗證碼，請查看信箱");
                 }
                 else if (str == "使用者驗證碼程序錯誤。使用者帳號[UserId]不存在"){
                     alert("信箱未註冊請重新輸入");
@@ -98,7 +98,7 @@
             var codecheck = document.getElementById("code").value;
             if(codecheck.length == 6 && emailcheck != ""){
                 var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-                isok= reg.test(email );
+                isok= reg.test(emailcheck);
                 if(!isok){
                     alert("Email格式錯誤，請重新輸入！")
                     document.getElementById("email").focus();
@@ -124,24 +124,35 @@
                     console.log(request.response);
                     var callbackData = JSON.parse(request.responseText);
                     var str = callbackData.description;
-                    if (str == "綁定成功"){
-                        alert("綁定成功");
+                if (str == "綁定成功"){
+                    alert("綁定成功");
+                    liff.sendMessages([
+                    {
+                        type: 'text',
+                        text: 'Hello, World!'
                     }
-                    else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
-                        alert("驗證碼錯誤");
-                    }
-                    else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
-                        alert("綁定錯誤請重試");
-                    }
-                    else if (str == "(發生錯誤)--"){
-                        alert("發生錯誤");
-                    }
-                    else if (str == "使用者驗證碼程序錯誤。"){
-                        alert("使用者驗證碼程序錯誤。");
-                    }
+                    ]).then(function(res) {
+                        console.log(res)
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+                }
+                else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
+                    alert("驗證碼錯誤");
+                }
+                else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
+                    alert("綁定錯誤請重試");
+                }
+                else if (str == "(發生錯誤)--"){
+                    alert("發生錯誤");
+                }
+                else if (str == "使用者驗證碼程序錯誤。"){
+                    alert("使用者驗證碼程序錯誤。");
+                }
             }
         }
-
+    }
 
         function manage(txt){
             var sure = document.getElementById('sure');
@@ -155,7 +166,7 @@
             }
         }   
 
-    }
+
 
 
     </script>
