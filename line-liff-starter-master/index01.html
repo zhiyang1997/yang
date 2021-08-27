@@ -127,24 +127,10 @@
                 if (str == "綁定成功"){
                     alert("綁定成功");
                     liff.sendMessages([{
-                        "type": "flex",
-                        "altText": "test",
-                        "contents": {
-                            "type": "bubble",
-                            "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [{
-                                "type": "button",
-                                "action": {
-                                "label": "uri",
-                                "type": "uri",
-                                "uri": "https://www.google.com"
-                                }
-                            }]
-                            }
-                        }
-                        }]).catch(err => { alert(err.message) })
+                    type: 'image',
+                    originalContentUrl: 'https://i.imgur.com/MwS42AE.png?sender=Brown',
+                    previewImageUrl: 'https://i.imgur.com/MwS42AE.png?sender=Brown'
+                    }]).catch(err => { alert(err.message) })
                 }
                 else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
                     alert("驗證碼錯誤");
