@@ -127,8 +127,8 @@
                 if (str == "綁定成功"){
                     alert("綁定成功");
                     liff.sendMessages([{
-                        type: 'data',
-                        text: '綁定成功'
+                        type: 'text',
+                        text: '綁定成功 '
                     }]).catch(err => { alert(err.message) })
                 }
                 else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
