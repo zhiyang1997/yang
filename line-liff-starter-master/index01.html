@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/23ab7c9c39.js" crossorigin="anonymous"></script>
         <title>園區情資通LINE帳號綁定</title>
     </head>
     <body>
@@ -17,9 +18,11 @@
             <h4>園區情資通LINE帳號綁定</h4>
             <p class="mail" style="text-align: left;">信箱：</p>
             <input type="text" id="email" placeholder="信箱">
-            <p class="password"  style="text-align: left;">驗證碼：</p>
-            <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)"></br>
+            <p id="exclamation" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="email_error"></span></i></p>
             <button type="button" id="send">寄送驗證碼</button>
+            <p class="password"  style="text-align: left;">驗證碼：</p>
+            <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)">
+            <p id="code_text" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="code_error"></span></i></p>
             <button type="button" id="sure" disabled>進行綁定</button>
             <hr>
             <p style="font-size: 15px; text-align: left; margin: auto;">歡迎您綁定園區情資通，綁定後您將會享受個人化的情資服務，且接收到您感興趣的第一手產業訊息。</p><br><br>
@@ -50,13 +53,20 @@
 
         document.getElementById('send').onclick = function()
         {
+            var exclamation =  document.getElementById('exclamation');
+            var email_error =  document.getElementById('email_error');
             var email = document.getElementById("email").value;
             if(email != ""){
                 var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
                 isok= reg.test(email );
                 if(!isok){
-                    alert("Email格式錯誤，請重新輸入！")
-                    document.getElementById("email").focus();
+                    email_error.innerHTML = "Email格式錯誤，請重新輸入！";
+                    exclamation.className ="fas fa-exclamation-circle";
+                    exclamation.style.color = 'red';
+                    email_error.style.color = 'red';
+                    exclamation.style.display = 'block';
+                    //alert("Email格式錯誤，請重新輸入！");
+                    //document.getElementById("email").focus();
                     return false;
                 }else{
                 var request = new XMLHttpRequest();
@@ -71,45 +81,75 @@
                 var callbackData = JSON.parse(request.responseText);
                 var str = callbackData.description;
                 if (str == "寄送Email成功"){
-                    alert("已寄出驗證碼，請查看信箱");
+                    email_error.innerHTML = "已寄出驗證碼，請查看信箱！";
+                    email_error.style.color = 'green';
+                    exclamation.style.color = 'green';
+                    exclamation.className ="fas fa-check-circle";
+                    exclamation.setAttribute("class","fas fa-check-circle");
+                    exclamation.style.display = 'block';
                 }
                 else if (str == "使用者驗證碼程序錯誤。使用者帳號[UserId]不存在"){
-                    alert("信箱未註冊請重新輸入");
+                    email_error.innerHTML = "查無此信箱，請重新輸入！";
+                    exclamation.className ="fas fa-exclamation-circle";
+                    exclamation.style.color = 'red';
+                    email_error.style.color = 'red';
+                    exclamation.style.display = 'block';
                 }
                 else if (str == "[UserId]為必填參數"){
-                    alert("請填入信箱");
+                    email_error.innerHTML = "信箱未填！";
+                    exclamation.className ="fas fa-exclamation-circle";
+                    exclamation.style.color = 'red';
+                    email_error.style.color = 'red';
+                    exclamation.style.display = 'block';
                 }
                 else if (str == "使用者驗證碼程序錯誤。已寄送驗證碼，請稍後在試"){
-                    alert("已寄送驗證碼，請稍後在試");
+                    email_error.innerHTML = "驗證碼已寄出，請稍後再試！";
+                    exclamation.className ="fas fa-exclamation-circle";
+                    exclamation.style.color = 'red';
+                    email_error.style.color = 'red';
+                    exclamation.style.display = 'block';
                 }
                 else if (str == "使用者驗證碼程序錯誤。"){
-                    alert("使用者驗證碼程序錯誤。");
+                    email_error.innerHTML = "驗證碼程序發生錯誤！";
+                    exclamation.className ="fas fa-exclamation-circle";
+                    exclamation.style.color = 'red';
+                    email_error.style.color = 'red';
+                    exclamation.style.display = 'block';
                 }
                 }
             }
             else{
-                alert("請填入信箱");
+                email_error.innerHTML = "信箱未填！";
+                exclamation.className ="fas fa-exclamation-circle";
+                exclamation.style.color = 'red';
+                email_error.style.color = 'red';
+                exclamation.style.display = 'block';
             }
 
         }
         document.getElementById('sure').onclick = function()
         {
-            var emailcheck = document.getElementById('email').value
+            var code_text =  document.getElementById('code_text');
+            var emailcheck = document.getElementById('email').value;
             var codecheck = document.getElementById("code").value;
             if(codecheck.length == 6 && emailcheck != ""){
                 var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
                 isok= reg.test(emailcheck);
                 if(!isok){
-                    alert("Email格式錯誤，請重新輸入！")
+                    email_error.innerHTML = "Email格式錯誤，請重新輸入！";
+                    exclamation.className ="fas fa-exclamation-circle";
+                    exclamation.style.color = 'red';
+                    email_error.style.color = 'red';
+                    exclamation.style.display = 'block';
                     document.getElementById("email").focus();
                     return false;
                 }else{
-                    var emailElement = document.getElementById('email')
-                    var email = emailElement.value
-                    var codeElement = document.getElementById('code')
-                    var code = codeElement.value
-                    var userIdElement = document.getElementById('userId')
-                    var userId = userIdElement.innerHTML
+                    var emailElement = document.getElementById('email');
+                    var email = emailElement.value;
+                    var codeElement = document.getElementById('code');
+                    var code = codeElement.value;
+                    var userIdElement = document.getElementById('userId');
+                    var userId = userIdElement.innerHTML;
                     console.log(userId);
                     var request = new XMLHttpRequest();
                     // POST to httpbin which returns the POST data as JSON
@@ -125,7 +165,11 @@
                     var callbackData = JSON.parse(request.responseText);
                     var str = callbackData.description;
                 if (str == "綁定成功"){
-                    alert("綁定成功");
+                    code_error.innerHTML = "綁定成功！請返回LINE頁面查看";
+                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.style.color = 'green';
+                    code_error.style.color = 'green';
+                    code_text.style.display = 'block';
                     liff.sendMessages([{
                         "type": "flex",
                         "altText": "Flex Message",
@@ -173,16 +217,32 @@
                         }]).catch(err => { alert(err.message) })
                 }
                 else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
-                    alert("驗證碼錯誤");
+                    code_error.innerHTML = "驗證碼錯誤，請重新輸入";
+                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.style.color = 'red';
+                    code_error.style.color = 'red';
+                    code_text.style.display = 'block';
                 }
                 else if (str == "(發生錯誤)LineId綁定過程中錯誤--"){
-                    alert("綁定錯誤請重試");
+                    code_error.innerHTML = "綁定發生錯誤";
+                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.style.color = 'red';
+                    code_error.style.color = 'red';
+                    code_text.style.display = 'block';
                 }
                 else if (str == "(發生錯誤)--"){
-                    alert("發生錯誤");
+                    code_error.innerHTML = "發生錯誤";
+                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.style.color = 'red';
+                    code_error.style.color = 'red';
+                    code_text.style.display = 'block';
                 }
                 else if (str == "使用者驗證碼程序錯誤。"){
-                    alert("使用者驗證碼程序錯誤。");
+                    code_error.innerHTML = "使用者驗證碼程序錯誤。";
+                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.style.color = 'red';
+                    code_error.style.color = 'red';
+                    code_text.style.display = 'block';
                 }
             }
         }
@@ -220,6 +280,10 @@
         color: #781623;
         }
 
+        #email_error{
+            font-size: 10px;
+            color: red;
+        }
         h4{
         text-align: center;
         width: 230px;
