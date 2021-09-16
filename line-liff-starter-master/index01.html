@@ -34,7 +34,7 @@
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">statusMessage:<span id="statusMessage"></span></p>
         </div>                                                                                                              
     </body>
-    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
         liff.init(data => {
           liff.getProfile().then(profile => {
@@ -166,7 +166,7 @@
                     var str = callbackData.description;
                 if (str == "綁定成功"){
                     code_error.innerHTML = "綁定成功！請返回LINE頁面查看";
-                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.className ="fas fa-check-circle";
                     code_text.style.color = 'green';
                     code_error.style.color = 'green';
                     code_text.style.display = 'block';
@@ -239,6 +239,13 @@
                 }
                 else if (str == "使用者驗證碼程序錯誤。"){
                     code_error.innerHTML = "使用者驗證碼程序錯誤。";
+                    code_text.className ="fas fa-exclamation-circle";
+                    code_text.style.color = 'red';
+                    code_error.style.color = 'red';
+                    code_text.style.display = 'block';
+                }
+                else if (str == "[LineId]為必填參數"){
+                    code_error.innerHTML = "[LineId]為必填參數。";
                     code_text.className ="fas fa-exclamation-circle";
                     code_text.style.color = 'red';
                     code_error.style.color = 'red';
