@@ -28,13 +28,13 @@
             <p style="font-size: 15px; text-align: left; margin: auto;">歡迎您綁定園區情資通，綁定後您將會享受個人化的情資服務，且接收到您感興趣的第一手產業訊息。</p><br><br>
             <p style="font-size:15px; text-align: left; color: #781623; margin: auto;">提醒您:</p>
             <p style="font-size:15px; text-align: left; margin: auto;">進行綁定前需於產業園區廠商情資平台上完成註冊帳號，<a href="https://smartpark.tw/sign-up?openexternalbrowser=1">點此前往。</a></p>
-            <p>userId:<span id="userId"></span></p>
+            <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">userId:<span id="userId"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">displayName:<span id="displayName"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">pictureUrl:<span id="pictureUrl"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">statusMessage:<span id="statusMessage"></span></p>
         </div>                                                                                                              
     </body>
-    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script>
         liff.init(data => {
           liff.getProfile().then(profile => {
