@@ -14,6 +14,7 @@
         <title>園區情資通LINE帳號綁定</title>
     </head>
     <body>
+        <div style="text-align: center;"><img style="max-width: 15%;height: auto;" src="mirdc.png"></div>
         <div class="container">
             <h4>園區情資通LINE帳號綁定</h4>
             <p class="mail" style="text-align: left;">信箱：</p>
@@ -24,7 +25,9 @@
             <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)">
             <p id="code_text" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="code_error"></span></i></p>
             <button type="button" id="sure" disabled>進行綁定</button>
+            <br>
             <hr>
+            <br>
             <p style="font-size: 15px; text-align: left; margin: auto;">歡迎您綁定園區情資通，綁定後您將會享受個人化的情資服務，且接收到您感興趣的第一手產業訊息。</p><br><br>
             <p style="font-size:15px; text-align: left; color: #781623; margin: auto;">提醒您:</p>
             <p style="font-size:15px; text-align: left; margin: auto;">進行綁定前需於產業園區廠商情資平台上完成註冊帳號，<a href="https://smartpark.tw/sign-up?openexternalbrowser=1">點此前往。</a></p>
@@ -71,7 +74,7 @@
                 }else{
                 var request = new XMLHttpRequest();
                 // POST to httpbin which returns the POST data as JSON
-                request.open('POST', 'https://indupark.mirdc.org.tw/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
+                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
 
                 var formData = new FormData();
                 formData.append('UserId', email);
@@ -153,7 +156,7 @@
                     console.log(userId);
                     var request = new XMLHttpRequest();
                     // POST to httpbin which returns the POST data as JSON
-                    request.open('POST', 'https://indupark.mirdc.org.tw/api/Line/SmartParkBindLineId', /* async = */ false);
+                    request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
 
                     var formData = new FormData();
                     formData.append('UserId', email);
@@ -331,7 +334,6 @@
         /*定位對齊*/
         position:relative;   
         margin: auto;
-        top: 100px;
         text-align:center;  
         }
 
@@ -370,7 +372,7 @@
         }
 
         #container2{
-        visibility: hidden; 
+        visibility: hidden;   /*剛開始消失*/
         height: 350px;
         }
 
