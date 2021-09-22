@@ -71,7 +71,7 @@
                 }else{
                 var request = new XMLHttpRequest();
                 // POST to httpbin which returns the POST data as JSON
-                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
+                request.open('POST', 'https://indupark.mirdc.org.tw/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
 
                 var formData = new FormData();
                 formData.append('UserId', email);
@@ -153,7 +153,7 @@
                     console.log(userId);
                     var request = new XMLHttpRequest();
                     // POST to httpbin which returns the POST data as JSON
-                    request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
+                    request.open('POST', 'https://indupark.mirdc.org.tw/api/Line/SmartParkBindLineId', /* async = */ false);
 
                     var formData = new FormData();
                     formData.append('UserId', email);
@@ -370,7 +370,7 @@
         }
 
         #container2{
-        visibility: hidden;   /*剛開始消失*/
+        visibility: hidden; 
         height: 350px;
         }
 
