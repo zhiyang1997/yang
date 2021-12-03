@@ -173,51 +173,6 @@
                     code_text.style.color = 'green';
                     code_error.style.color = 'green';
                     code_text.style.display = 'block';
-                    liff.sendMessages([{
-                        "type": "flex",
-                        "altText": "Flex Message",
-                        "contents": {
-                            "type": "bubble",
-                            "hero": {
-                            "type": "image",
-                            "url": "https://i.imgur.com/StRD277.png",
-                            "size": "full",
-                            "aspectRatio": "4:3",
-                            "aspectMode": "cover",
-                            "backgroundColor": "#FBF3D9",
-                            "action": {
-                                "type": "uri",
-                                "label": "Action",
-                                "uri": "https://smartpark.tw/map-search?openExternalBrowser=1"
-                            }
-                            },
-                            "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "spacing": "md",
-                            "action": {
-                                "type": "uri",
-                                "label": "Action",
-                                "uri": "https://smartpark.tw/map-search?openExternalBrowser=1"
-                            },
-                            "contents": [
-                                {
-                                "type": "text",
-                                "text": "恭喜您，綁定成功！如想查詢其他詳細資訊請點我",
-                                "size": "md",
-                                "align": "center",
-                                "color": "#1D1203",
-                                "wrap": true
-                                }
-                            ]
-                            },
-                            "styles": {
-                            "body": {
-                                "backgroundColor": "#FFFFFF"
-                            }
-                            }
-                        }
-                        }]).catch(err => { alert(err.message) })
                 }
                 else if (str == "(發生錯誤)驗證碼驗證過程中錯誤--驗證碼錯誤"){
                     code_error.innerHTML = "驗證碼錯誤，請重新輸入";
