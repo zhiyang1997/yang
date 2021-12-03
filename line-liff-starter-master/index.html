@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <h4>園區情資通LINE帳號綁定(測試用)</h4>
+            <h5>園區情資通LINE帳號綁定(測試用)</h5>
             <p class="mail" style="text-align: left;">信箱：</p>
             <input type="text" id="email" placeholder="email@example.com">
             <p id="exclamation" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="email_error"></span></i></p>
@@ -153,7 +153,7 @@
                     console.log(userId);
                     var request = new XMLHttpRequest();
                     // POST to httpbin which returns the POST data as JSON
-                    request.open('POST', 'https://indupark.mirdc.org.tw/api/Line/SmartParkBindLineId', /* async = */ false);
+                    request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkBindLineId', /* async = */ false);
 
                     var formData = new FormData();
                     formData.append('UserId', email);
