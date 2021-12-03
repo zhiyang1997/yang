@@ -71,7 +71,7 @@
                 }else{
                 var request = new XMLHttpRequest();
                 // POST to httpbin which returns the POST data as JSON
-                request.open('POST', 'https://indupark.mirdc.org.tw/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
+                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
 
                 var formData = new FormData();
                 formData.append('UserId', email);
