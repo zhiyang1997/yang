@@ -11,25 +11,22 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/23ab7c9c39.js" crossorigin="anonymous"></script>
-        <title>園區情資通LINE與我聯絡</title>
+        <title>園區情資通LINE聯絡我們</title>
     </head>
     <body>
         <div style="text-align: center;"><img style="max-width: 15%;height: auto;" src="mirdc.png"></div>
         <div class="container">
-            <h4>園區情資通LINE帳號綁定</h4>
-            <p class="mail" style="text-align: left;">UserId</p>
-            <span id="userId"><input type="text"></span>
+            <h4>園區情資通LINE聯絡我們</h4>
+            <hr>
+            <p><span id="displayName"></span>您好，很高興能為您服務！</p>
+            <textarea name="mytext" rows="13" cols="30" required></textarea>
             <p id="exclamation" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="email_error"></span></i></p>
-            <button type="button" id="send">寄送驗證碼</button>
-            <p class="password"  style="text-align: left;">驗證碼：</p>
-            <input type="text" id="code" placeholder="驗證碼" inputmode="numeric" onkeyup="manage(this)">
-            <p id="code_text" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="code_error"></span></i></p>
+            <button type="button" id="send">送出</button>
             <br>
             <hr>
             <br>
-            <p style="font-size: 15px; text-align: left; margin: auto;">歡迎您綁定園區情資通，綁定後您將會享受個人化的情資服務，且接收到您感興趣的第一手產業訊息。</p><br><br>
             <p style="font-size:15px; text-align: left; color: #781623; margin: auto;">提醒您:</p>
-            <p style="font-size:15px; text-align: left; margin: auto;">進行綁定前需於產業園區廠商情資平台上完成註冊帳號，<a href="https://smartpark.tw/sign-up?openexternalbrowser=1">點此前往。</a></p>
+            <p style="font-size:15px; text-align: left; margin: auto; width: 255px;">提問前請先綁定情資平台，<a href="https://liff.line.me/1656322172-LakKO8Wd">點此前往。</a></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">userId:<span id="userId"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">displayName:<span id="displayName"></span></p>
             <p style="position: absolute;margin-top: -9999px;margin-left: -9999px;">pictureUrl:<span id="pictureUrl"></span></p>
@@ -73,7 +70,7 @@
                 }else{
                 var request = new XMLHttpRequest();
                 // POST to httpbin which returns the POST data as JSON
-                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/CompanyUpload/SendUploadVERCodeEmail', /* async = */ false);
+                request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkQuestionUpload', /* async = */ false);
 
                 var formData = new FormData();
                 formData.append('UserId', email);
@@ -130,7 +127,7 @@
 
         }
         function manage(txt){
-            var sure = document.getElementById('sure');
+            var sure = document.getElementById('send');
             if (txt.value !=''){
                 sure.disabled = false;
                 sure.style.background = "#781623";
@@ -184,7 +181,7 @@
         p{
           text-align: center;
           width: 230px;
-          height: 30px;
+          height: 25px;
           margin: 5px;
           font-size: medium;
         }
@@ -195,7 +192,7 @@
         .container{
         margin: 50px;
         padding: 10px;
-        width: 280px;
+        width: 300px;
         height: 500px;
         background-color: white;
         border-radius: 5px;
