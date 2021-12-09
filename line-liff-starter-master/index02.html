@@ -19,7 +19,7 @@
             <h4>園區情資通LINE聯絡我們</h4>
             <hr>
             <p><span id="displayName"></span>您好，很高興能為您服務！</p>
-            <textarea name="text" style="resize:none; margin:0px; width: 240px; height: 270px;"></textarea>
+            <textarea id="text" style="resize:none; margin:0px; width: 240px; height: 270px;"></textarea>
             <p id="exclamation" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="email_error"></span></i></p>
             <button type="button" id="send">送出</button>
             <br>
@@ -52,79 +52,60 @@
 
         document.getElementById('send').onclick = function()
         {
-            var exclamation =  document.getElementById('exclamation');
-            var email_error =  document.getElementById('email_error');
-            var email = document.getElementById("email").value;
-            if(email != ""){
-                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-                isok= reg.test(email );
-                if(!isok){
-                    email_error.innerHTML = "Email格式錯誤，請重新輸入！";
-                    exclamation.className ="fas fa-exclamation-circle";
-                    exclamation.style.color = 'red';
-                    email_error.style.color = 'red';
-                    exclamation.style.display = 'block';
-                    //alert("Email格式錯誤，請重新輸入！");
-                    //document.getElementById("email").focus();
-                    return false;
-                }else{
+            var text =  document.getElementById('text').value;
+            if (text !=""){
+                Today = Date();
+                console.log(Today);
                 var request = new XMLHttpRequest();
                 // POST to httpbin which returns the POST data as JSON
                 request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkQuestionUpload', /* async = */ false);
 
                 var formData = new FormData();
-                formData.append('UserId', email);
+                formData.append('LineId', userId);
+                formData.append('CreateDate', Today);
+                formData.append('Content', text);
 
                 request.send(formData);
                 console.log(request.responseText);
                 var callbackData = JSON.parse(request.responseText);
                 var str = callbackData.description;
-                if (str == "寄送Email成功"){
-                    email_error.innerHTML = "已寄出驗證碼，請查看信箱！";
+                if (str == "上傳成功"){
+                    email_error.innerHTML = "上傳成功！";
                     email_error.style.color = 'green';
                     exclamation.style.color = 'green';
                     exclamation.className ="fas fa-check-circle";
                     exclamation.setAttribute("class","fas fa-check-circle");
                     exclamation.style.display = 'block';
                 }
-                else if (str == "使用者驗證碼程序錯誤。使用者帳號[UserId]不存在"){
-                    email_error.innerHTML = "查無此信箱，請重新輸入！";
+                else if (str == "(發生錯誤)LineId尚未綁定情資平台--"){
+                    email_error.innerHTML = "LineId沒有綁定平台！";
                     exclamation.className ="fas fa-exclamation-circle";
                     exclamation.style.color = 'red';
                     email_error.style.color = 'red';
                     exclamation.style.display = 'block';
                 }
-                else if (str == "[UserId]為必填參數"){
-                    email_error.innerHTML = "信箱未填！";
+                else if (str == "[LineId]為必填參數"){
+                    email_error.innerHTML = "Param缺少LineId！";
                     exclamation.className ="fas fa-exclamation-circle";
                     exclamation.style.color = 'red';
                     email_error.style.color = 'red';
                     exclamation.style.display = 'block';
                 }
-                else if (str == "使用者驗證碼程序錯誤。已寄送驗證碼，請稍後在試"){
-                    email_error.innerHTML = "驗證碼已寄出，請稍後再試！";
-                    exclamation.className ="fas fa-exclamation-circle";
-                    exclamation.style.color = 'red';
-                    email_error.style.color = 'red';
-                    exclamation.style.display = 'block';
-                }
-                else if (str == "使用者驗證碼程序錯誤。"){
-                    email_error.innerHTML = "驗證碼程序發生錯誤！";
+                else if (str == "問題內容[Question]為必填參數"){
+                    email_error.innerHTML = "內容為空！";
                     exclamation.className ="fas fa-exclamation-circle";
                     exclamation.style.color = 'red';
                     email_error.style.color = 'red';
                     exclamation.style.display = 'block';
                 }
                 }
-            }
             else{
-                email_error.innerHTML = "信箱未填！";
+                email_error.innerHTML = "請填寫內容！";
                 exclamation.className ="fas fa-exclamation-circle";
                 exclamation.style.color = 'red';
                 email_error.style.color = 'red';
                 exclamation.style.display = 'block';
             }
-
         }
         function manage(txt){
             var sure = document.getElementById('send');
@@ -193,7 +174,7 @@
         margin: 50px;
         padding: 10px;
         width: 300px;
-        height: 500px;
+        height: 550px;
         background-color: white;
         border-radius: 5px;
         border-top: 10px solid #781623;
