@@ -19,7 +19,7 @@
             <h4>園區情資通LINE聯絡我們</h4>
             <hr>
             <p><span id="displayName"></span>您好，很高興能為您服務！</p>
-            <textarea id="text" style="resize:none; margin:0px; width: 240px; height: 270px;"></textarea>
+            <textarea type="text" id="content" style="resize:none; margin:0px; width: 240px; height: 270px;"></textarea>
             <p id="exclamation" style="display:none; height: 15px;">&nbsp;&nbsp;<i  class="" style=" color: red; letter-spacing: 1.5px;"><span id="email_error"></span></i></p>
             <button type="button" id="send">送出</button>
             <br>
@@ -52,19 +52,16 @@
 
         document.getElementById('send').onclick = function()
         {
-            var text =  document.getElementById('text').value;
-            if (text !=""){
-                Today = Date();
-                console.log(Today);
+            var content =  document.getElementById('content').value;
+            if (content !=""){
                 var request = new XMLHttpRequest();
                 // POST to httpbin which returns the POST data as JSON
                 request.open('POST', 'https://induparkweb-stage.ddns.net:8068/api/Line/SmartParkQuestionUpload', /* async = */ false);
 
                 var formData = new FormData();
                 formData.append('LineId', userId);
-                formData.append('CreateDate', Today);
-                formData.append('Content', text);
-
+                formData.append('Question', content);
+                console.log(content)
                 request.send(formData);
                 console.log(request.responseText);
                 var callbackData = JSON.parse(request.responseText);
@@ -92,7 +89,7 @@
                     exclamation.style.display = 'block';
                 }
                 else if (str == "問題內容[Question]為必填參數"){
-                    email_error.innerHTML = "內容為空！";
+                    email_error.innerHTML = "上傳缺少問題或內容為空！";
                     exclamation.className ="fas fa-exclamation-circle";
                     exclamation.style.color = 'red';
                     email_error.style.color = 'red';
